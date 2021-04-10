@@ -22,5 +22,8 @@
         <action
             android:id="@+id/action_detailsFragment_to_listFragment"
             app:destination="@id/listFragment" />
+        <argument
+            android:name="pokemonDetails"
+            app:argType="com.example.poke2.poke2.model.Pokemon" />
     </fragment>
 </navigation>
