@@ -3,4 +3,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="options_menu_search">Options Menu Search</string>
+    <string name="Name"> Name:"  "%s </string>
+    <string name="Height">Height:"  "%d </string>
+    <string name="Weight">Weight:"  "%d </string>
 </resources>
