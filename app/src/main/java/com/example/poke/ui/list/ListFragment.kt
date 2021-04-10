@@ -2,7 +2,10 @@ package com.example.poke.ui.list
 
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.View
+import android.widget.SearchView
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -61,6 +64,38 @@ class ListFragment : Fragment(R.layout.fragment_list) {
                 .create()
                 .show()
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+
+        val search = menu.findItem(R.id.app_bar_search)
+        val searchView: SearchView? = search?.actionView as SearchView?
+
+
+        searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return true
+            }
+
+            override fun onQueryTextChange(query: String?): Boolean {
+
+                if (query != null) {
+                    searchContact(query)
+                }
+                return true
+            }
+        })
+    }
+
+
+    private fun searchContact(search: String) {
+        viewModel.filterPokemons(search)
+        viewModel.myResponse.observe(viewLifecycleOwner, Observer { result ->
+            pokemonAdapter = PokemonAdapter(result.data)
+            pokemonAdapter.notifyDataSetChanged()
+        })
     }
 
 }
