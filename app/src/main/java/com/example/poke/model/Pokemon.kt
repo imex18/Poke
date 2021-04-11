@@ -7,7 +7,7 @@ import kotlinx.android.parcel.Parcelize
 import kotlinx.android.parcel.RawValue
 
 @Parcelize
-@Entity
+@Entity (tableName = "pokemons")
 class Pokemon(
     val name: String,
     val spriteUrl: String,

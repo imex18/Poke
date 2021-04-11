@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.poke.R
+import com.example.poke.data.local.PokemonDataBase
 import com.example.poke.repository.PokemonRepository
 import com.example.poke2.poke2.ui.list.PokemonViewModel
 import com.example.poke2.poke2.ui.list.ViewModelFactory
@@ -20,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val repository = PokemonRepository()
+        val repository = PokemonRepository(PokemonDataBase(this))
         val viewModelFactory = ViewModelFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory).get(PokemonViewModel::class.java)
 

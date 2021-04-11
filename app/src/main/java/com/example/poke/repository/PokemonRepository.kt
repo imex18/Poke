@@ -1,13 +1,14 @@
 package com.example.poke.repository
 
 import android.util.Log
+import com.example.poke.data.local.PokemonDataBase
 import com.example.poke.data.remote.RetrofitInstance
 import com.example.poke.model.Pokemon
 import com.example.poke.model.PokemonURL
 import com.example.poke.util.Constants
 
 
-class PokemonRepository {
+class PokemonRepository (val db:PokemonDataBase) {
 
     suspend fun getPokemons(): List<Pokemon>? {
 
@@ -58,5 +59,11 @@ class PokemonRepository {
         return mappedPokemons
     }
 
+
+    // local database operations
+
+  suspend fun savePokemon(item:Pokemon) = db.getDao().savePokemon(item)
+  fun getSavedPokemons ()= db.getDao().getSavedPokemons()
+  suspend fun deletePokemon(item: Pokemon) = db.getDao().deletePokemon(item)
 
 }
