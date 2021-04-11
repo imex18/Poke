@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -40,6 +41,8 @@ class FavouritesFragment : Fragment(R.layout.fragment_favourites) {
 
             adapter.list = items
             adapter.notifyDataSetChanged()
+            tv_no_favourites.isVisible = adapter.list!!.isEmpty()
+
         })
 
 

@@ -112,6 +112,9 @@ class ListFragment : Fragment(R.layout.fragment_list) {
         viewModel.myResponse.observe(viewLifecycleOwner, Observer { result ->
             pokemonAdapter = PokemonAdapter(result.data)
             pokemonAdapter.notifyDataSetChanged()
+
+            tv_no_result.isVisible = pokemonAdapter.list!!.isEmpty()
+
         })
     }
 
