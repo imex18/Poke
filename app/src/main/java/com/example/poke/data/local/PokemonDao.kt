@@ -9,11 +9,13 @@ import com.example.poke.model.Pokemon
 interface PokemonDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun savePokemon (item:Pokemon) : Long
+    suspend fun savePokemon (item:Pokemon)
 
     @Query("SELECT * FROM pokemons")
     fun getSavedPokemons(): LiveData<List<Pokemon>>
 
     @Delete
     suspend fun deletePokemon(item:Pokemon)
+
+
 }

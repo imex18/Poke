@@ -8,8 +8,9 @@ import com.bumptech.glide.Glide
 
 import androidx.navigation.findNavController
 import com.example.poke.R
-import com.example.poke.ui.list.ListFragmentDirections
+
 import com.example.poke.model.Pokemon
+import com.example.poke.ui.list.ListFragmentDirections
 import kotlinx.android.synthetic.main.item_view.view.*
 
 class PokemonAdapter (
@@ -40,7 +41,8 @@ class PokemonAdapter (
 
                 row_layout.setOnClickListener {
 
-                    val action = ListFragmentDirections.actionListFragmentToDetailsFragment(currentitem!!)
+
+                   val action = ListFragmentDirections.actionListFragmentToDetailsFragment(currentitem!!)
                     findNavController().navigate(action)
 
          }

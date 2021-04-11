@@ -30,6 +30,6 @@ abstract class PokemonDataBase : RoomDatabase() {
 
         private fun createDatabase(context: Context) =
             Room.databaseBuilder(context.applicationContext,
-                PokemonDataBase::class.java, "article_db.db").build()
+                PokemonDataBase::class.java, "pokemon_db.db").build()
     }
 }

@@ -5,9 +5,11 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.poke.R
@@ -42,13 +44,26 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
 
             Toast.makeText(context, "${currentItem.name} added to Favourites", Toast.LENGTH_SHORT).show()
 
-        }
+
+                  }
+
 
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         menu.findItem(R.id.app_bar_search).isVisible = false
         super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle item selection
+        return when (item.itemId) {
+            R.id.options_menu_favoutites -> {
+                findNavController().navigate(R.id.action_detailsFragment_to_favouritesFragment)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
 

@@ -16,6 +16,7 @@ class PokemonViewModel(private val repository: PokemonRepository) : ViewModel() 
 
 
 
+
     fun getPokemons() = viewModelScope.launch {
 
         allPokemonURLS = emptyList()
@@ -51,8 +52,11 @@ class PokemonViewModel(private val repository: PokemonRepository) : ViewModel() 
     fun getSavedPokemons() = repository.getSavedPokemons()
 
 
+
+
     fun deletePokemon(item:Pokemon) = viewModelScope.launch(Dispatchers.IO) {
         repository.deletePokemon(item)
+
 
     }
 

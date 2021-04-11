@@ -9,10 +9,10 @@ import kotlinx.android.parcel.RawValue
 @Parcelize
 @Entity (tableName = "pokemons")
 class Pokemon(
-    val name: String,
-    val spriteUrl: String,
     @PrimaryKey(autoGenerate = true)
     val id:Int,
+    val name: String,
+    val spriteUrl: String,
     val weight: Int,
     val height: Int,
 ) :Parcelable {

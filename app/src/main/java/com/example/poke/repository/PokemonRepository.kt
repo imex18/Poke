@@ -38,22 +38,22 @@ class PokemonRepository (val db:PokemonDataBase) {
 
                 if (pokemonDetailsResponse != null) {
                     Pokemon(
+                        pokemonDetailsResponse.id,
                         onePokemon.name,
                         pokemonDetailsResponse.sprites.frontDefault,
-                        pokemonDetailsResponse.id,
                         pokemonDetailsResponse.weight,
                         pokemonDetailsResponse.height
                     )
 
                 } else {
 
-                    Pokemon(onePokemon.name, "", 0, 0, 0)
+                    Pokemon(0,onePokemon.name, "", 0, 0 )
 
                 }
             } else {
 
                 Log.d("Response", response.errorBody().toString())
-                Pokemon(onePokemon.name, "", 0, 0, 0 )
+                Pokemon(0,onePokemon.name, "", 0, 0 )
             }
         }
         return mappedPokemons
@@ -65,5 +65,6 @@ class PokemonRepository (val db:PokemonDataBase) {
   suspend fun savePokemon(item:Pokemon) = db.getDao().savePokemon(item)
   fun getSavedPokemons ()= db.getDao().getSavedPokemons()
   suspend fun deletePokemon(item: Pokemon) = db.getDao().deletePokemon(item)
+
 
 }

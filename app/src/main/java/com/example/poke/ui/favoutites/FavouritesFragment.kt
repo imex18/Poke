@@ -1,6 +1,8 @@
 package com.example.poke.ui.favoutites
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -8,6 +10,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.poke.R
+import com.example.poke.adapter.FavouritesAdapter
 import com.example.poke.adapter.PokemonAdapter
 import com.example.poke.model.Pokemon
 import com.example.poke.ui.MainActivity
@@ -20,21 +23,30 @@ class FavouritesFragment : Fragment(R.layout.fragment_favourites) {
 
 
     private lateinit var viewModel: PokemonViewModel
-    private lateinit var adapter: PokemonAdapter
+    private lateinit var adapter: FavouritesAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setHasOptionsMenu(true)
 
         viewModel = (activity as MainActivity).viewModel
 
 
-        viewModel.getSavedPokemons().observe(viewLifecycleOwner, Observer { articles ->
+        adapter = FavouritesAdapter(listOf())
+        rv_favourites.adapter = adapter
+        rv_favourites.layoutManager = LinearLayoutManager(requireContext())
 
-            setupRecyclerView(articles)
+
+
+
+        viewModel.getSavedPokemons().observe(viewLifecycleOwner, Observer { items ->
+
+            adapter.list = items
+            adapter.notifyDataSetChanged()
         })
 
 
-        val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(
+             val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(
             ItemTouchHelper.UP or ItemTouchHelper.DOWN,
             ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
         ) {
@@ -69,16 +81,15 @@ class FavouritesFragment : Fragment(R.layout.fragment_favourites) {
 
     }
 
-    private fun setupRecyclerView(item: List<Pokemon>?) {
-        adapter = PokemonAdapter(item)
-        rv_favourites.apply {
-            adapter = adapter
-            layoutManager = LinearLayoutManager(activity)
-        }
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        menu.findItem(R.id.app_bar_search).isVisible = false
+        menu.findItem(R.id.options_menu_favoutites).isVisible = false
+        super.onCreateOptionsMenu(menu, inflater)
     }
 
 
-}
+    }
+
 
 
 
