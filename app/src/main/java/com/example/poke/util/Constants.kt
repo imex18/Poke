@@ -2,7 +2,7 @@ package com.example.poke.util
 
 class Constants {
 
-    companion object{
+    companion object {
 
         const val BASE_URL = "https://pokeapi.co/api/v2/"
     }

@@ -24,7 +24,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
 
     private val args by navArgs<DetailsFragmentArgs>()
     lateinit var viewModel: PokemonViewModel
-    lateinit var currentItem :Pokemon
+    lateinit var currentItem: Pokemon
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -42,10 +42,11 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
 
             viewModel.savePokemon(currentItem)
 
-            Toast.makeText(context, "${currentItem.name} added to Favourites", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "${currentItem.name} added to Favourites", Toast.LENGTH_SHORT)
+                .show()
 
 
-                  }
+        }
 
 
     }
@@ -67,11 +68,11 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
     }
 
 
-    fun populateFields(){
+    fun populateFields() {
 
         Glide.with(this)
-                .load(currentItem.spriteUrl)
-                .into(iv_details_pokemon)
+            .load(currentItem.spriteUrl)
+            .into(iv_details_pokemon)
 
         val name = resources.getString(R.string.Name, currentItem.name)
         tv_details_name.setText(name)

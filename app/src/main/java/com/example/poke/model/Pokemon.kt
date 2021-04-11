@@ -7,13 +7,13 @@ import kotlinx.android.parcel.Parcelize
 import kotlinx.android.parcel.RawValue
 
 @Parcelize
-@Entity (tableName = "pokemons")
+@Entity(tableName = "pokemons")
 class Pokemon(
     @PrimaryKey(autoGenerate = true)
-    val id:Int,
+    val id: Int,
     val name: String,
     val spriteUrl: String,
     val weight: Int,
     val height: Int,
-) :Parcelable {
+) : Parcelable {
 }

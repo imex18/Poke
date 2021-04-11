@@ -3,8 +3,8 @@ package com.example.poke2.poke2.ui.list
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.poke.repository.PokemonRepository
 import com.example.poke.model.Pokemon
+import com.example.poke.repository.PokemonRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -13,8 +13,6 @@ class PokemonViewModel(private val repository: PokemonRepository) : ViewModel() 
 
     private var allPokemonURLS: List<Pokemon> = emptyList()
     var myResponse: MutableLiveData<Resource<List<Pokemon>>> = MutableLiveData()
-
-
 
 
     fun getPokemons() = viewModelScope.launch {
@@ -27,13 +25,11 @@ class PokemonViewModel(private val repository: PokemonRepository) : ViewModel() 
         if (pokemons != null) {
             allPokemonURLS = pokemons
             myResponse.value = Resource.Success(pokemons)
-        }
-        else {
+        } else {
             // We have to notify about the error
             myResponse.value = Resource.Error("OOPS... Something went wrong")
         }
     }
-
 
 
     fun filterPokemons(searchText: String) {
@@ -43,18 +39,16 @@ class PokemonViewModel(private val repository: PokemonRepository) : ViewModel() 
         myResponse.value = Resource.Success(filteredPokemons)
     }
 
-     //db operations
+    //db operations
 
-    fun savePokemon(item:Pokemon) = viewModelScope.launch(Dispatchers.IO) {
+    fun savePokemon(item: Pokemon) = viewModelScope.launch(Dispatchers.IO) {
         repository.savePokemon(item)
     }
 
     fun getSavedPokemons() = repository.getSavedPokemons()
 
 
-
-
-    fun deletePokemon(item:Pokemon) = viewModelScope.launch(Dispatchers.IO) {
+    fun deletePokemon(item: Pokemon) = viewModelScope.launch(Dispatchers.IO) {
         repository.deletePokemon(item)
 
 
@@ -71,8 +65,6 @@ class PokemonViewModel(private val repository: PokemonRepository) : ViewModel() 
         class Loading<T> : Resource<T>()
 
     }
-
-
 
 
 }

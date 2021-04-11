@@ -10,16 +10,16 @@ object RetrofitInstance {
 
 
     private val retrofit by lazy {
-            Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(OkHttpClient())
-                .build()
+        Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(OkHttpClient())
+            .build()
 
-        }
-        val api by lazy {
-
-            retrofit.create(PokeAPI::class.java)
-
-        }
     }
+    val api by lazy {
+
+        retrofit.create(PokeAPI::class.java)
+
+    }
+}

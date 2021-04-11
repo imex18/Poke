@@ -8,7 +8,7 @@ import com.example.poke.model.PokemonURL
 import com.example.poke.util.Constants
 
 
-class PokemonRepository (val db:PokemonDataBase) {
+class PokemonRepository(val db: PokemonDataBase) {
 
     suspend fun getPokemons(): List<Pokemon>? {
 
@@ -47,13 +47,13 @@ class PokemonRepository (val db:PokemonDataBase) {
 
                 } else {
 
-                    Pokemon(0,onePokemon.name, "", 0, 0 )
+                    Pokemon(0, onePokemon.name, "", 0, 0)
 
                 }
             } else {
 
                 Log.d("Response", response.errorBody().toString())
-                Pokemon(0,onePokemon.name, "", 0, 0 )
+                Pokemon(0, onePokemon.name, "", 0, 0)
             }
         }
         return mappedPokemons
@@ -62,9 +62,9 @@ class PokemonRepository (val db:PokemonDataBase) {
 
     // local database operations
 
-  suspend fun savePokemon(item:Pokemon) = db.getDao().savePokemon(item)
-  fun getSavedPokemons ()= db.getDao().getSavedPokemons()
-  suspend fun deletePokemon(item: Pokemon) = db.getDao().deletePokemon(item)
+    suspend fun savePokemon(item: Pokemon) = db.getDao().savePokemon(item)
+    fun getSavedPokemons() = db.getDao().getSavedPokemons()
+    suspend fun deletePokemon(item: Pokemon) = db.getDao().deletePokemon(item)
 
 
 }

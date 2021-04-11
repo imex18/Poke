@@ -16,7 +16,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var viewModel: PokemonViewModel
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -35,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
-    override fun onSupportNavigateUp():Boolean {
+    override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.fragment_container)
         return navController.navigateUp() || super.onSupportNavigateUp()
     }

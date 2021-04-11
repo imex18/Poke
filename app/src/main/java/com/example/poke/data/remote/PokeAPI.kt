@@ -10,6 +10,7 @@ interface PokeAPI {
 
     @GET("pokemon/")
     suspend fun getPokemons(): Response<PokemonListResponse>
+
     @GET
     suspend fun getPokemonDetails(@Url url: String): Response<PokemonDetailsReponse>
 

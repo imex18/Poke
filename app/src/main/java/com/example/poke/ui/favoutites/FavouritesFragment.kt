@@ -10,9 +10,6 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.poke.R
-import com.example.poke.adapter.FavouritesAdapter
-import com.example.poke.adapter.PokemonAdapter
-import com.example.poke.model.Pokemon
 import com.example.poke.ui.MainActivity
 import com.example.poke2.poke2.ui.list.PokemonViewModel
 import com.google.android.material.snackbar.Snackbar
@@ -46,7 +43,7 @@ class FavouritesFragment : Fragment(R.layout.fragment_favourites) {
         })
 
 
-             val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(
+        val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(
             ItemTouchHelper.UP or ItemTouchHelper.DOWN,
             ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
         ) {
@@ -88,7 +85,7 @@ class FavouritesFragment : Fragment(R.layout.fragment_favourites) {
     }
 
 
-    }
+}
 
 
 

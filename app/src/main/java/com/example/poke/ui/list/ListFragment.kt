@@ -14,7 +14,6 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.poke.R
-import com.example.poke.adapter.PokemonAdapter
 import com.example.poke.ui.MainActivity
 import com.example.poke2.poke2.ui.list.PokemonViewModel
 import kotlinx.android.synthetic.main.fragment_list.*
@@ -31,6 +30,8 @@ class ListFragment : Fragment(R.layout.fragment_list) {
         viewModel = (activity as MainActivity).viewModel
         viewModel.getPokemons()
 
+        pokemonAdapter = PokemonAdapter(listOf())
+        rv_list.adapter = pokemonAdapter
 
 
         viewModel.myResponse.observe(viewLifecycleOwner, Observer { state ->
@@ -38,6 +39,7 @@ class ListFragment : Fragment(R.layout.fragment_list) {
                 is PokemonViewModel.Resource.Success -> {
                     //initialize the adapter and pass it to the recyclerview
                     pokemonAdapter = PokemonAdapter(state.data)
+                    progressBar.isVisible = false
                     rv_list.apply {
                         adapter = pokemonAdapter
                         layoutManager = GridLayoutManager(context, 2)
@@ -47,11 +49,12 @@ class ListFragment : Fragment(R.layout.fragment_list) {
                 is PokemonViewModel.Resource.Error -> {
                     // show a retry dialog
                     retryDialog()
+                    progressBar.isVisible = false
                 }
 
                 is PokemonViewModel.Resource.Loading -> {
                     // show a progress bar
-                    progressBar.isVisible
+                    progressBar.isVisible = true
                 }
             }
         })
@@ -73,7 +76,6 @@ class ListFragment : Fragment(R.layout.fragment_list) {
 
         val search = menu.findItem(R.id.app_bar_search)
         val searchView: SearchView? = search?.actionView as SearchView?
-        val favourites = menu.findItem(R.id.item_view_favourites)
 
 
 
@@ -103,7 +105,6 @@ class ListFragment : Fragment(R.layout.fragment_list) {
             else -> super.onOptionsItemSelected(item)
         }
     }
-
 
 
     private fun searchContact(search: String) {

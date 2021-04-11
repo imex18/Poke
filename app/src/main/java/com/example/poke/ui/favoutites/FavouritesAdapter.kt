@@ -1,4 +1,4 @@
-package com.example.poke.adapter
+package com.example.poke.ui.favoutites
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,9 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.poke.R
 import com.example.poke.model.Pokemon
-import com.example.poke.ui.favoutites.FavouritesFragmentDirections
-import com.example.poke.ui.list.ListFragmentDirections
-import kotlinx.android.synthetic.main.item_view.view.*
 import kotlinx.android.synthetic.main.item_view_favourites.view.*
 
 
@@ -23,7 +20,7 @@ class FavouritesAdapter(
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): FavouritesAdapter.ItemViewHolder {
+    ): ItemViewHolder {
         val view =
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.item_view_favourites, parent, false)
@@ -43,13 +40,15 @@ class FavouritesAdapter(
                 .load(currentitem?.spriteUrl.orEmpty())
                 .into(favoutites_image)
 
-           favourites_name.setText(currentitem?.name)
+            favourites_name.setText(currentitem?.name)
 
-           // displaying current item on the details screen.
+            // displaying current item on the details screen.
             item_view_favourites.setOnClickListener {
 
-                val action = FavouritesFragmentDirections.actionFavouritesFragmentToDetailsFragment(currentitem!!)
-                    findNavController().navigate(action)
+                val action = FavouritesFragmentDirections.actionFavouritesFragmentToDetailsFragment(
+                    currentitem!!
+                )
+                findNavController().navigate(action)
 
             }
 

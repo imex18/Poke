@@ -7,12 +7,14 @@ import androidx.room.RoomDatabase
 
 import com.example.poke.model.Pokemon
 
-@Database(entities = [Pokemon::class],
-    version = 1)
+@Database(
+    entities = [Pokemon::class],
+    version = 1
+)
 
 abstract class PokemonDataBase : RoomDatabase() {
 
-    abstract fun getDao() : PokemonDao
+    abstract fun getDao(): PokemonDao
 
     companion object {
 
@@ -29,7 +31,9 @@ abstract class PokemonDataBase : RoomDatabase() {
             }
 
         private fun createDatabase(context: Context) =
-            Room.databaseBuilder(context.applicationContext,
-                PokemonDataBase::class.java, "pokemon_db.db").build()
+            Room.databaseBuilder(
+                context.applicationContext,
+                PokemonDataBase::class.java, "pokemon_db.db"
+            ).build()
     }
 }

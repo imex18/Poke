@@ -7,4 +7,4 @@ import kotlinx.android.parcel.Parcelize
 data class PokemonURL(
     val name: String,
     val url: String
-):Parcelable
+) : Parcelable
