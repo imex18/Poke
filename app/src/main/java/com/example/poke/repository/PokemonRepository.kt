@@ -2,9 +2,10 @@ package com.example.poke.repository
 
 import android.util.Log
 import com.example.poke.data.remote.RetrofitInstance
+import com.example.poke.model.Pokemon
 import com.example.poke.model.PokemonURL
 import com.example.poke.util.Constants
-import com.example.poke2.poke2.model.Pokemon
+
 
 class PokemonRepository {
 

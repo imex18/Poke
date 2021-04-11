@@ -24,6 +24,6 @@
             app:destination="@id/listFragment" />
         <argument
             android:name="pokemonDetails"
-            app:argType="com.example.poke2.poke2.model.Pokemon" />
+            app:argType="com.example.poke.model.Pokemon" />
     </fragment>
 </navigation>

@@ -3,9 +3,8 @@ package com.example.poke2.poke2.ui.list
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.poke.model.PokemonURL
 import com.example.poke.repository.PokemonRepository
-import com.example.poke2.poke2.model.Pokemon
+import com.example.poke.model.Pokemon
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

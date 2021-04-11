@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import androidx.navigation.findNavController
 import com.example.poke.R
 import com.example.poke.ui.list.ListFragmentDirections
-import com.example.poke2.poke2.model.Pokemon
+import com.example.poke.model.Pokemon
 import kotlinx.android.synthetic.main.item_view.view.*
 
 class PokemonAdapter (

@@ -1,13 +1,17 @@
-package com.example.poke2.poke2.model
+package com.example.poke.model
 
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 import kotlinx.android.parcel.RawValue
 
 @Parcelize
+@Entity
 class Pokemon(
     val name: String,
     val spriteUrl: String,
+    @PrimaryKey(autoGenerate = true)
     val id:Int,
     val weight: Int,
     val height: Int,
