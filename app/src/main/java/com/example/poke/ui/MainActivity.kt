@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
 
         setupActionBarWithNavController(findNavController(R.id.fragment_container))
 
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

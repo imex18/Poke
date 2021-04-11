@@ -6,4 +6,5 @@
     <string name="Name"> Name:"  "%s </string>
     <string name="Height">Height:"  "%d </string>
     <string name="Weight">Weight:"  "%d </string>
+    <string name="favourites">Favourites</string>
 </resources>

@@ -4,12 +4,14 @@ package com.example.poke.ui.list
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.widget.SearchView
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.poke.R
 import com.example.poke.adapter.PokemonAdapter
@@ -71,6 +73,8 @@ class ListFragment : Fragment(R.layout.fragment_list) {
 
         val search = menu.findItem(R.id.app_bar_search)
         val searchView: SearchView? = search?.actionView as SearchView?
+        val favourites = menu.findItem(R.id.item_view_favourites)
+
 
 
         searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -88,6 +92,18 @@ class ListFragment : Fragment(R.layout.fragment_list) {
             }
         })
     }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle item selection
+        return when (item.itemId) {
+            R.id.options_menu_favoutites -> {
+                findNavController().navigate(R.id.action_listFragment_to_favouritesFragment)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
 
 
     private fun searchContact(search: String) {
